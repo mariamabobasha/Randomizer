@@ -12,11 +12,12 @@
       "https://forms.gle/jRQ73fky3hN65Jur5"
     ];
 
+    // Select the random link immediately
+    const randomIndex = Math.floor(Math.random() * links.length);
+    const chosenUrl = links[randomIndex];
+
     // Optional: equal probability randomization
     function randomRedirect() {
-      const randomIndex = Math.floor(Math.random() * links.length);
-      const chosenUrl = links[randomIndex];
-
       // Redirect the user
       window.location.replace(chosenUrl);
     }
@@ -28,8 +29,8 @@
 <body>
   <p>Redirecting to the survey… If nothing happens, <a id="backup-link" href="#">click here</a>.</p>
   <script>
-    // Set backup link in case JS is slow
-    document.getElementById("backup-link").href = links[0];
+    // Set backup link in case JS is slow using the same chosenUrl
+    document.getElementById("backup-link").href = chosenUrl;
   </script>
 </body>
 </html>
